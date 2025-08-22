@@ -1,2 +1,92 @@
-# AI-Researcher-Workbench
-This workbench defines a research-friendly repository layout for AI Researcher Workbench. It includes a recommended directory tree, file templates, CI, contribution guidelines, and notes on how each piece supports reproducible research, experiment tracking, and collaborative development.
+# AI Researcher Workbench — Project Structure & Templates
+
+
+This document defines a research-friendly repository layout for **AI Researcher Workbench**. It includes a recommended directory tree, file templates, CI, contribution guidelines, and notes on how each piece supports reproducible research, experiment tracking, and collaborative development.
+
+---
+
+## Goals of this repository
+
+* Serve as a single unified workbench for experiments, utilities, and research notes.
+* Make experiments reproducible (random seeds, env, data manifests, notebooks).
+* Offer clean API for core utilities (linear algebra, integration problems, experiment helpers).
+* Provide examples and notebooks that are easy to run locally or via Binder/GitHub Codespaces.
+* Be collaboration-ready with clear contribution docs, license, and CI.
+
+---
+
+---
+
+## File / folder responsibilities (short)
+
+* `.github/workflows/` — GitHub Actions: CI (lint/test), docs build, optional auto-release on tag.
+* `docs/` — user-facing docs and API reference (Sphinx or MkDocs).
+* `notebooks/` — interactive demonstrations and reproducible experiments. Keep them small; ensure they have `requirements` or `environment.yml` cells.
+* `examples/` — runnable minimal scripts that show how to use `src/` components.
+* `src/airesearcher/` — real package code; everything importable `pip install -e .`.
+* `tests/` — unit + integration tests; prefer pytest. Include numerical tolerance checks for floating computations.
+* `scripts/` — small helper scripts (launchers, dataset downloaders).
+* `Dockerfile` — reproducible container for CI or running heavier experiments.
+* `pyproject.toml` + `requirements.txt` — build and runtime dependencies; prefer pinned versions for CI.
+
+---
+
+## Recommended package layout (`src/airesearcher`)
+
+**`math/integrals.py`** — responsibilities:
+
+* Provide closed-form integrals from the 30-day AI list when analytic (Gaussian, Gamma, Beta, simple KLs).
+* Provide numeric fallback wrappers using `scipy.integrate.quad` and Monte Carlo for expectations without closed form.
+* Provide testable functions with clear docstrings and examples.
+
+**`math/linear_algebra.py`** — responsibilities:
+
+* PCA helpers: `center_data`, `compute_svd`, `project`, `reconstruct`, `variance_explained`.
+* Small stable wrappers for SVD/eigs that detect shape (use `scipy.sparse.linalg` when needed).
+* Utility functions: `whiten`, `mahalanobis_distance`, `rank`, `pseudoinverse`.
+
+**`experiments/runner.py`** — responsibilities:
+
+* Read `configs/` (JSON/YAML) describing experiments.
+* Seed RNGs, set up logging, checkpointing, and deterministic behavior.
+* Save minimal `run_manifest.json` with parameters + git commit SHA for reproducibility.
+
+**`utils/rng.py`**
+
+* Provide `set_global_seed(seed)` to seed numpy, python random, and torch (if present).
+
+**`data/dataset.py`**
+
+* Small local dataset utilities and data manifest loader. Keep external dataset downloads in `scripts/` if large.
+
+---
+
+## README.md (skeleton)
+
+````md
+# AI Researcher Workbench
+
+**AI Researcher Workbench** — reproducible research templates, numerical math helpers (integrals & linear algebra), and examples used for teaching and prototyping.
+
+## Highlights
+
+* Analytic integrals commonly used in ML (KLs, Gaussian expectations).
+* Linear algebra utilities: PCA, SVD helpers, whitening, Mahalanobis distance.
+* Notebooks and examples ready for Binder/GitHub Codespaces.
+
+## License & Contact
+
+Apache-2.0 — Open for academic/industrial collaboration.
+Contact: **Steve Stavros Prokovas**
+
+```
+
+---
+
+## License file (note)
+Include `LICENSE` file containing Apache License 2.0 boilerplate and a short header in `README.md`:
+
+> License: Apache-2.0 — Open for academic/industrial collaboration.  
+> Contact: **Steve Stavros Prokovas**
+
+```
