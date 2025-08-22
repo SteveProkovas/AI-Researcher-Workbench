@@ -17,19 +17,6 @@ This document defines a research-friendly repository layout for **AI Researcher 
 
 ---
 
-## File / folder responsibilities (short)
-
-* `.github/workflows/` — GitHub Actions: CI (lint/test), docs build, optional auto-release on tag.
-* `docs/` — user-facing docs and API reference (Sphinx or MkDocs).
-* `notebooks/` — interactive demonstrations and reproducible experiments. Keep them small; ensure they have `requirements` or `environment.yml` cells.
-* `examples/` — runnable minimal scripts that show how to use `src/` components.
-* `src/airesearcher/` — real package code; everything importable `pip install -e .`.
-* `tests/` — unit + integration tests; prefer pytest. Include numerical tolerance checks for floating computations.
-* `scripts/` — small helper scripts (launchers, dataset downloaders).
-* `Dockerfile` — reproducible container for CI or running heavier experiments.
-* `pyproject.toml` + `requirements.txt` — build and runtime dependencies; prefer pinned versions for CI.
-
----
 
 ## Recommended package layout (`src/airesearcher`)
 
