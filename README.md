@@ -15,9 +15,6 @@ This document defines a research-friendly repository layout for **AI Researcher 
 
 ---
 
----
-
-
 ## Recommended package layout (`src/airesearcher`)
 
 **`math/integrals.py`** — responsibilities:
