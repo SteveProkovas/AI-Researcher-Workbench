@@ -46,20 +46,6 @@ This document defines a research-friendly repository layout for **AI Researcher 
 
 * Small local dataset utilities and data manifest loader. Keep external dataset downloads in `scripts/` if large.
 
----
-
-## README.md (skeleton)
-
-````md
-# AI Researcher Workbench
-
-**AI Researcher Workbench** — reproducible research templates, numerical math helpers (integrals & linear algebra), and examples used for teaching and prototyping.
-
-## Highlights
-
-* Analytic integrals commonly used in ML (KLs, Gaussian expectations).
-* Linear algebra utilities: PCA, SVD helpers, whitening, Mahalanobis distance.
-* Notebooks and examples ready for Binder/GitHub Codespaces.
 
 ## License & Contact
 
