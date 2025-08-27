@@ -51,3 +51,4 @@ This document defines a research-friendly repository layout for **AI Researcher 
 
 Apache-2.0 — Open for academic/industrial collaboration.
 Contact: **Steve Stavros Prokovas**
+Email: sprokovas@gmail.com
