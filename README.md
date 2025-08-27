@@ -65,15 +65,3 @@ This document defines a research-friendly repository layout for **AI Researcher 
 
 Apache-2.0 — Open for academic/industrial collaboration.
 Contact: **Steve Stavros Prokovas**
-
-```
-
----
-
-## License file (note)
-Include `LICENSE` file containing Apache License 2.0 boilerplate and a short header in `README.md`:
-
-> License: Apache-2.0 — Open for academic/industrial collaboration.  
-> Contact: **Steve Stavros Prokovas**
-
-```
